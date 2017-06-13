@@ -112,18 +112,29 @@
 // Every canvas object contains a stack of drawing states. Stacks are data structures that only let you push new items at one end. When you retrieve an item, it's the last item that was pushed or Last In-First Out(LIFO).
 
 // Let's see how this would work in code. Let's say you wanted to draw a couple rectangles in different colors. For this small example, we could get away with reassigning the fillStyle each time instead of using save and restore.
-ctx.rotate(0 * Math.PI/180);
+ctx.rotate(300 * Math.PI/180);
 ctx.fillStyle = "green";
-ctx.fillRect(0,0,50,50);
+ctx.lineWidth = 10;
+ctx.shadowBlur=10;
+ctx.shadowColor = "black";
+ctx.strokeStyle = "purple";
+ctx.strokeRect(50,70,50,50);
+
 
 // Save state with green fill
 ctx.save();
 ctx.fillStyle = "yellow";
-ctx.fillRect(100,100,10,10);
+ctx.shadowBlur = 0;
+ctx.fillRect(100,140,10,10);
 // Restore to green fill
 ctx.restore();
 
 ctx.fillRect(200,10,20,20);
+ctx.lineWidth = 1;
+ctx.rotate(345 * Math.PI/180);
+ctx.shadowBlur = 0;
+ctx.strokeStyle = "black";
+ctx.strokeText("Colors and Shapes are fun artwork", 20, 20);
 
 
 // The canvas state can store:
@@ -131,8 +142,8 @@ ctx.fillRect(200,10,20,20);
 // The current transformation matrix (rotation, scaling, translation)
 // strokeStyle
 // fillStyle
-// font
-// globalAlpha
+// font 
+// globalAlpha (transparency)
 // lineWidth
 // lineCap
 // lineJoin
